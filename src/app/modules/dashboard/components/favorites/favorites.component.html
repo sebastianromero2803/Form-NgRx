@@ -1,18 +1,28 @@
-<div class="favorites">
-    <h2>Favorites Show</h2>
-    <div class="favorites__show" *ngFor="let show of favorites; let i = index">
-      <div class="favorites__number">#{{ i }}</div>
-      <div class="favorites__title">
-        <span class="favorites__tittle-text">Title: </span>{{ show.title }}
-      </div>
-      <div class="favorites__type">
-        <span class="favorites__type-text">Type: </span>{{ show.type }}
-      </div>
-      <div class="favorites__year">
-        <span class="favorites__year-text">Year: </span>{{ show.year }}
-      </div>
-      <div class="favorites__action">
-        <mat-icon class="favorites__delete" (click)="removeFavorite(i)">delete</mat-icon>
-      </div>
-    </div>
+<div class="title">
+  <h2>Favorite Movies</h2>
 </div>
+<div class="favorite">
+  <div class="content" *ngFor="let show of favorites; let i = index">
+    <div class="favorite__header">
+        <div class="favorite__header--info">
+            <div class="favorite__header__title">
+                <span><b>Title: {{show.title}}</b></span>
+            </div>
+
+            <div class="favorite__header__journal">
+                <span><b>Type: {{show.type}}</b></span>
+            </div>
+            
+            <div class="favorite__header__year">
+              <span><b>Year: {{show.year}}</b></span>
+          </div>
+        </div>
+        <div class="favorite__delete">
+            <mat-icon (click)="removeFavorite(i)">close</mat-icon>
+        </div>
+    </div>
+    
+    <img class="favorite__image" [src]="show.poster">
+  </div>
+</div>
+<br>
