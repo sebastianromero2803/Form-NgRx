@@ -18,15 +18,14 @@ export class MoviesService {
         console.log('response', response);
         response.Response = response.Response === "True";
         response['error'] = !response['Response']
-        delete response['Response'];
         response['data'] = {
-          results: response?.Search,
+          results: response.Search,
           totalResults: parseInt(response.totalResults),
         }
         delete response['Search'];
         delete response['totalResults'];
 
-        response.data.results.map((element: any) => {
+        response.data.results?.map((element: any) => {
           element['poster'] = element['Poster'];
           element['title'] = element['Title'];
           element['type'] = element['Type'];

@@ -26,7 +26,7 @@ export class SearchComponent {
     this.movieForm = this.fb.group({
       option: ['', Validators.required],
       title: ["", Validators.required],
-      year: [{value: '', disabled: true}, Validators.required],
+      year: [{value: '', disabled: true}, [Validators.required, , Validators.minLength(4)]],
     });
   }
 

@@ -13,12 +13,22 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: 2rem;
   row-gap: 2rem;
-  max-width: 1000rem;
-  margin: 0 15rem;
+  max-width: 100rem;
+  margin: 0 8rem;
   &__delete {
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
+    mat-icon {
+      margin-left: 0.1rem;
+      background-color: #f24d72;
+      border-radius: 0.5rem;
+      border-color: #9FA8DA;
+      box-shadow: 1px 1px 3px #999;
+    }
+    mat-icon:hover {
+      background-color: #d83d60
+    }
   }
   &__header {
     display: flex;
@@ -30,8 +40,8 @@
   flex-direction: column;
   column-gap: 2rem;
   row-gap: 2rem;
-  min-width: 18rem;
-  max-width: 30rem;
+  min-width: 16rem;
+  max-width: 18rem;
   max-height: 35rem;
   margin: 0 auto;
   padding: 1rem 1rem;

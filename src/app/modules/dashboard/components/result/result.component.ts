@@ -8,16 +8,19 @@ import { MovieInterface } from '@app-models/movie.model';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  displayedColumns: string[] = ["title", "type", "year", "action"];
-  dataSource: MovieInterface[];
-  movieForm: FormGroup;
+  
   @Input() movieList: MovieInterface[];
   @Output() addFavoriteMovieEmitter = new EventEmitter<MovieInterface>();
+
+  dataSource: MovieInterface[];
+  movieForm: FormGroup;
+  favoriteToAdd: MovieInterface;
+
   constructor(private fb: FormBuilder) {
     this.dataSource = [];
     this.movieList = [];
+    this.favoriteToAdd = {} as MovieInterface;
     this.movieForm = this.fb.group({
-      title: [""],
       movies: this.fb.array([]),
     });
   }
@@ -45,10 +48,19 @@ export class ResultComponent implements OnInit {
       title: [movieData.title],
       type: [movieData.type],
       year: [movieData.year],
+      comment: ['']
     });
   }
 
   addFavoriteMovie(index: number) {
-    this.addFavoriteMovieEmitter.emit(this.dataSource[index]);
+    this.favoriteToAdd = {
+      id: this.dataSource[index].id,
+      poster: this.dataSource[index].poster,
+      title: this.getMovieList.at(index).value.title,
+      type: this.getMovieList.at(index).value.type,
+      year: this.getMovieList.at(index).value.year,
+      comment: this.getMovieList.at(index).value.comment
+    };
+    this.addFavoriteMovieEmitter.emit(this.favoriteToAdd);
   }
 }

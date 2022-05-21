@@ -20,9 +20,8 @@ export class FavoritesComponent {
     confirmButtonText: 'Delete',
     denyButtonText: 'Cancel',
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed)
         this.removeFavoriteEmitter.emit(index);
-      }
     });
   }
 }

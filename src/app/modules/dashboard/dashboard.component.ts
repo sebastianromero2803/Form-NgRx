@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { MoviesService } from "@app-services/movies.service";
-import { MovieInterface } from "@app-models/movie.model";
+import { MovieInterface, MovieListResponse } from "@app-models/movie.model";
 import Swal from "sweetalert2";
 
 @Component({
@@ -24,8 +24,8 @@ export class DashboardComponent {
   searchMovie(movieTitle: string) {
     this.movieList = [];
     this.moviesService.getMovieList(movieTitle).subscribe(
-      (result: any) => {
-        if (!result.error)
+      (result: MovieListResponse) => {
+        if (result.Response)
           this.movieList = result.data.results;
         else
           Swal.fire('Demasiados resultados, intenta escribir más', '', 'error');
@@ -35,14 +35,15 @@ export class DashboardComponent {
 
   addFavoriteMovie(favoriteMovie: MovieInterface) {
     const alreadyAdded = this.favoriteShows.findIndex(
-      (element) => element.title === favoriteMovie.title
+      (element) => element.id === favoriteMovie.id
     );
     if (alreadyAdded === -1) {
       favoriteMovie.registerDate = new Date();
       this.favoriteShows.push(favoriteMovie);
+      Swal.fire('Added to favorites', '', 'success');
     }
     else {
-      this.message = 'Movie already added: ' + favoriteMovie.title;
+      this.message = 'The movie: "' + favoriteMovie.title + '" has already been added.';
       Swal.fire(this.message, '', 'error');
     }
   }
