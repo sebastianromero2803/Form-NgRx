@@ -11,8 +11,11 @@ import { SearchComponent } from './components/search/search.component';
 import { ResultComponent } from './components/result/result.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 
+import { PipesModule } from "@shared/pipes/pipes.module";
+import { DirectivesModule } from "@shared/directives/directives.module";
+
 @NgModule({
   declarations: [DashboardComponent, SearchComponent, ResultComponent, FavoritesComponent],
-  imports: [CommonModule, DashboardRoutingModule, AngularMaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, DashboardRoutingModule, AngularMaterialModule, FormsModule, ReactiveFormsModule, PipesModule, DirectivesModule],
 })
 export class DashboardModule {}
