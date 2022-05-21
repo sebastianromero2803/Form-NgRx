@@ -26,7 +26,7 @@ export class SearchComponent {
     this.movieForm = this.fb.group({
       option: ['', Validators.required],
       title: ["", Validators.required],
-      year: [{value: '', disabled: true}],
+      year: [{value: '', disabled: true}, Validators.required],
     });
   }
 
@@ -38,10 +38,11 @@ export class SearchComponent {
     return this.movieForm.get("option");
   }
 
-  enable() {
+  isDisabled() {
     if(this.getOption?.value == 'series')
       this.movieForm.controls['year'].enable();
-    return true;
+    else
+      this.movieForm.controls['year'].disable();
   }
 
   searchMovie() {
