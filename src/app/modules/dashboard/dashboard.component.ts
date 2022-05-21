@@ -11,7 +11,6 @@ import Swal from "sweetalert2";
 export class DashboardComponent {
   movieList: MovieInterface[];
   favoriteShows: MovieInterface[];
-  searchingMovie = false;
   selectedColor: string;
   today: Date;
   message: string = '';
@@ -38,8 +37,10 @@ export class DashboardComponent {
     const alreadyAdded = this.favoriteShows.findIndex(
       (element) => element.title === favoriteMovie.title
     );
-    if (alreadyAdded === -1)
+    if (alreadyAdded === -1) {
+      favoriteMovie.registerDate = new Date();
       this.favoriteShows.push(favoriteMovie);
+    }
     else {
       this.message = 'Movie already added: ' + favoriteMovie.title;
       Swal.fire(this.message, '', 'error');
@@ -48,6 +49,7 @@ export class DashboardComponent {
 
   removeFavorite(index: number) {
     this.favoriteShows.splice(index, 1);
+    Swal.fire('Content removed', '', 'success');
   }
 
   hasResults() {

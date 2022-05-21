@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { MovieInterface } from "@app-models/movie.model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-favorites",
@@ -13,7 +14,15 @@ export class FavoritesComponent {
     this.favorites = [];
   }
 
-  removeFavorite(index: number) {
-    this.removeFavoriteEmitter.emit(index);
+  removeFavorite(index: number) {Swal.fire({
+    title: 'Are you sure you want to remove this from favorites?',
+    showDenyButton: true,
+    confirmButtonText: 'Delete',
+    denyButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.removeFavoriteEmitter.emit(index);
+      }
+    });
   }
 }

@@ -18,4 +18,5 @@ export interface MovieInterface {
   title: string;
   type: string;
   year: string;
+  registerDate?: Date;
 }

@@ -1,38 +1,47 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+interface IContentType {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnChanges {
+export class SearchComponent {
 
-  @Input() searching: boolean;
   @Output() searchMovieEmitter = new EventEmitter<string>();
   
   movieForm: FormGroup;
-  options: any = [
-    {value: 'movies-0', viewValue: 'movies'},
-    {value: 'series-1', viewValue: 'series'},
-    {value: 'episodes-2', viewValue: 'episodes'},
-  ];
+  options: IContentType[] =  [
+    {value: 'movies', viewValue: 'movies'},
+    {value: 'series', viewValue: 'series'},
+    {value: 'episodes', viewValue: 'episodes'},
+  ]
 
   constructor(private fb: FormBuilder) {
     this.movieForm = this.fb.group({
+      option: ['', Validators.required],
       title: ["", Validators.required],
-      year: [""],
+      year: [{value: '', disabled: true}],
     });
-    this.searching = false;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['searching'].currentValue)
-      this.searching = changes['searching'].currentValue;
   }
 
   get getTitle() {
     return this.movieForm.get("title");
+  }
+
+  get getOption() {
+    return this.movieForm.get("option");
+  }
+
+  enable() {
+    if(this.getOption?.value == 'series')
+      this.movieForm.controls['year'].enable();
+    return true;
   }
 
   searchMovie() {

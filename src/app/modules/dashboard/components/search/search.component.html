@@ -1,9 +1,9 @@
 <div class="form" [formGroup]="movieForm">
     <mat-form-field class="form__input" appearance="fill" required>
         <mat-label>Select Content Type</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let option of options" [value]="option.value">
-                {{option.viewValue | titlecase}}
+        <mat-select formControlName="option">
+            <mat-option *ngFor="let opt of options" [value]="opt.value">
+                {{opt.viewValue | titlecase}}
             </mat-option>
         </mat-select>
     </mat-form-field>
@@ -13,14 +13,14 @@
     </mat-form-field>
     <mat-form-field class="form__input" appearance="legacy">
         <mat-label>Año de estreno</mat-label>
-        <input matInput formControlName="year" />
+        <input matInput formControlName="year" [disabled]="!movieForm.valid"/>
     </mat-form-field>
     <button
         mat-flat-button
         color="primary"
-        [disabled]="searching"
+        [disabled]="!movieForm.valid"
         (click)="searchMovie()"
     >
-        {{ searching ? "Searching" : "Search" }}
+        Search
     </button>
 </div>
