@@ -1,7 +1,15 @@
+.title {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 .form {
     width: 50%;
     padding: 0.8rem;
-    margin: 3rem auto;
+    margin: 0 auto;
     box-shadow: 2px 2px 5px #999;
     border-radius: 0.5rem;
     &__input {
