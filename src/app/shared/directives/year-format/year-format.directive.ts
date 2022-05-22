@@ -13,9 +13,8 @@ export class YearFormatDirective {
     const key = event.keyCode || event.charCode;
     if (key === 8 || key === 46) return false;
     this.el.nativeElement.value = this.formatValue(initalValue);
-    if (initalValue !== this.el.nativeElement.value) {
+    if (initalValue !== this.el.nativeElement.value)
       event.stopPropagation();
-    }
   }
   
   private formatValue(value: string): string {
