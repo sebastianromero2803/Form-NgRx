@@ -11,8 +11,9 @@ import { map } from "rxjs/operators";
 export class MoviesService {
   constructor(private http: HttpClient) {}
 
-  public getMovieList(query: string): Observable<MovieListResponse> {
-    const url = `${environment.URL}/?s=${query}&apikey=${environment.OMDB_APIKEY}`;
+  public getMovieList(query: string[]): Observable<MovieListResponse> {
+    const url = `${environment.URL}/?s=${query[0]}&type=${query[1]}&y=${query[2]}&apikey=${environment.OMDB_APIKEY}`;
+    console.log(url);
     return this.http.get<any>(url).pipe(
       map((response) => {
         console.log('response', response);

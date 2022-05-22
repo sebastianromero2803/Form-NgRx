@@ -21,9 +21,10 @@ export class DashboardComponent {
     this.today = new Date();
   }
 
-  searchMovie(movieTitle: string) {
+  searchMovie(movieQuery: string[]) {
     this.movieList = [];
-    this.moviesService.getMovieList(movieTitle).subscribe(
+    console.log(movieQuery);
+    this.moviesService.getMovieList(movieQuery).subscribe(
       (result: MovieListResponse) => {
         if (result.Response)
           this.movieList = result.data.results;

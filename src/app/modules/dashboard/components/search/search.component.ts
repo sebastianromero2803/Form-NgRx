@@ -13,13 +13,13 @@ interface IContentType {
 })
 export class SearchComponent {
 
-  @Output() searchMovieEmitter = new EventEmitter<string>();
+  @Output() searchMovieEmitter = new EventEmitter<string[]>();
   
   movieForm: FormGroup;
   options: IContentType[] =  [
-    {value: 'movies', viewValue: 'movies'},
+    {value: 'movie', viewValue: 'movies'},
     {value: 'series', viewValue: 'series'},
-    {value: 'episodes', viewValue: 'episodes'},
+    {value: 'episode', viewValue: 'episodes'},
   ]
 
   constructor(private fb: FormBuilder) {
@@ -38,6 +38,10 @@ export class SearchComponent {
     return this.movieForm.get("option");
   }
 
+  get getYear() {
+    return this.movieForm.get("year");
+  }
+
   isDisabled() {
     if(this.getOption?.value == 'series')
       this.movieForm.controls['year'].enable();
@@ -46,7 +50,7 @@ export class SearchComponent {
   }
 
   searchMovie() {
-    this.searchMovieEmitter.emit(this.getTitle!.value);
+    this.searchMovieEmitter.emit([this.getTitle!.value, this.getOption?.value, this.getYear?.value]);
   }
 
 }
