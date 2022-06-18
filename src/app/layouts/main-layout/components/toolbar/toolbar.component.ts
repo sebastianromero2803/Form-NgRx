@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { AuthenticationService } from "@app-core/authentication/authentication.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -12,7 +11,6 @@ export class ToolbarComponent {
   toggleHideSidebar = new EventEmitter<any>();
 
   constructor(
-    private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
@@ -23,10 +21,5 @@ export class ToolbarComponent {
     } else {
       this.toggleHideSidebar.emit(true);
     }*/
-  }
-
-  public logout(): void {
-    this.authenticationService.logout();
-    this.router.navigateByUrl("login");
   }
 }

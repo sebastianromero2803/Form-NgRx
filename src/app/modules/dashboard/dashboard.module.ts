@@ -7,15 +7,15 @@ import { AngularMaterialModule, FormsModule } from '@shared/index';
 import { DashboardComponent } from "./dashboard.component";
 
 import { ReactiveFormsModule } from "@angular/forms";
-import { SearchComponent } from './components/search/search.component';
-import { ResultComponent } from './components/result/result.component';
-import { FavoritesComponent } from './components/favorites/favorites.component';
 
 import { PipesModule } from "@shared/pipes/pipes.module";
 import { DirectivesModule } from "@shared/directives/directives.module";
+import { ResidentialFormComponent } from './components/residential-form/residential-form.component';
+import { ResumeComponent } from './components/resume/resume.component';
+import { PersonalComponent } from './components/personal/personal.component';
 
 @NgModule({
-  declarations: [DashboardComponent, SearchComponent, ResultComponent, FavoritesComponent],
+  declarations: [DashboardComponent, ResidentialFormComponent, ResumeComponent, PersonalComponent],
   imports: [CommonModule, DashboardRoutingModule, AngularMaterialModule, FormsModule, ReactiveFormsModule, PipesModule, DirectivesModule],
 })
 export class DashboardModule {}

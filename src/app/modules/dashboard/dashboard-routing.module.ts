@@ -7,6 +7,14 @@ const routes: Routes = [
     path: "",
     component: DashboardComponent,
   },
+  // {
+  //   path: "personal",
+  //   component: PersonalFormComponent
+  // },
+  // {
+  //   path: "residential",
+  //   component: ResidentialFormComponent
+  // }
 ];
 
 @NgModule({

@@ -10,19 +10,4 @@
       Puntos Colombia
     </div>
   </div>
-
-  <div class="menu" [matMenuTriggerFor]="menu">
-    Username
-  </div>
-  
-  <mat-menu #menu="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item [routerLink]="['/edit-profile']">
-      <mat-icon>exit_to_app</mat-icon>
-      <span>Edit Profile</span>
-    </button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>
-      <span>Logout</span>
-    </button>
-  </mat-menu>
 </mat-toolbar>
