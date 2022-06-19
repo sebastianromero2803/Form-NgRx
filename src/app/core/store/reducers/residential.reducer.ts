@@ -20,6 +20,6 @@ const _residentialReducer = createReducer(
   }))
 );
 
-export function residentialReducer(state: ResidentialState, action: Action) {
+export function residentialReducer(state: ResidentialState | undefined, action: Action) {
   return _residentialReducer(state, action);
 }

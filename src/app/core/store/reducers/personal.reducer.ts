@@ -22,6 +22,6 @@ const _personalReducer = createReducer(
   }))
 );
 
-export function personalReducer(state: PersonalState, action: Action) {
+export function personalReducer(state: PersonalState | undefined, action: Action) {
   return _personalReducer(state, action);
 }

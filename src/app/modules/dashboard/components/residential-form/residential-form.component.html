@@ -1,1 +1,29 @@
-<p>residential-form works!</p>
+<div class="title">
+    <h2>Enter your residential information here</h2>
+</div>
+<div class="form" [formGroup]="residentialForm">
+    <mat-form-field class="form__input" appearance="legacy">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="direction"/>
+    </mat-form-field>
+    <mat-form-field class="form__input" appearance="legacy">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="neighborhood"/>
+    </mat-form-field>
+    <mat-form-field class="form__input" appearance="legacy">
+        <mat-label>Edad</mat-label>
+        <input matInput formControlName="department"/>
+    </mat-form-field>
+    <mat-form-field class="form__input" appearance="legacy">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput formControlName="city"/>
+    </mat-form-field>
+    <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!residentialForm.valid"
+        (click)="saveResidential()"
+    >
+        Save
+    </button>
+</div>
