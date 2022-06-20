@@ -1,0 +1,27 @@
+.title {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    button {
+        width: 20%;
+    }
+}
+.form {
+    width: 50%;
+    padding: 0.8rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 5px #999;
+    border-radius: 0.5rem;
+    &__input {
+        padding: 1rem 1rem;
+        width: 60%;
+    }
+}

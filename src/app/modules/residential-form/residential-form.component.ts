@@ -4,6 +4,7 @@ import { storeResidential } from '@app-core/store/actions/residential.action';
 import { ResidentialState } from '@app-core/store/models/residential.model';
 import { getResidentialInfo } from '@app-core/store/selectors/residential.selector';
 import { Store } from '@ngrx/store';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-residential-form',
@@ -41,6 +42,9 @@ export class ResidentialFormComponent {
 
   public canExit(): boolean {
     if (!this.residentialForm.valid) {
+      Swal.fire(
+        "No puedes salir de la página hasta llenar todos los campos con datos válidos."
+      );
       return false;
     }
     return true;

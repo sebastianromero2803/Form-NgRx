@@ -20,9 +20,9 @@ export class PersonalComponent {
     this.personalForm = this.fb.group({
       name: ['', Validators.required],
       lastName: ["", Validators.required],
-      age: [0, [Validators.required, Validators.min(1), Validators.max(125)]],
+      age: [0, [Validators.required, Validators.min(1), Validators.max(125), Validators.pattern("^[0-9]*$"), Validators.maxLength(3)]],
       email: ["", [Validators.required, Validators.email]],
-      phone: ["", Validators.required]
+      phone: ["", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.maxLength(10)]]
     });
     
     this.store.select(getPersonalInfo).subscribe((result: PersonalState) => {
