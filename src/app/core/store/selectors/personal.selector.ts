@@ -6,5 +6,7 @@ export const personalSelector =
 
 export const getPersonalInfo = createSelector(
   personalSelector,
-  (state: PersonalState) => [state.name, state.lastName, state.email, state.age, state.phone]
+  (state: PersonalState) => {
+    return {name: state.name, lastName: state.lastName, email: state.email, age: state.age, phone: state.phone} as PersonalState;
+  }
 );

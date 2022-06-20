@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { PersonalGuard } from "@app-core/guards/personal-guard/personal.guard";
+import { ResidentialGuard } from "@app-core/guards/residential-guard/residential.guard";
 import { MainLayoutComponent } from "./main-layout.component";
-import { PuntosColombiaComponent } from "@app-modules/puntos-colombia/components/principal/puntos-colombia.component";
-import { UberComponent } from "@app-modules/uber/components/principal/uber.component";
 
 const routes: Routes = [
   {
@@ -12,24 +12,32 @@ const routes: Routes = [
       {
         path: "",
         pathMatch: "full",
-        redirectTo: "dashboard",
+        redirectTo: "personal",
       },
       {
-        path: "dashboard",
+        path: "personal",
         pathMatch: "full",
         loadChildren: () =>
-          import("@app-modules/dashboard/dashboard.module").then(
-            (m) => m.DashboardModule
+          import("@app-modules/personal/personal.module").then(
+            (m) => m.PersonalModule
           ),
       },
       {
-        path: 'uber',
-        component: UberComponent
+        path: "residential",
+        pathMatch: "full",
+        loadChildren: () =>
+          import("@app-modules/residential-form/residential-form.module").then(
+            (m) => m.ResidentialFormModule
+          ),
       },
       {
-        path: 'puntos',
-        component: PuntosColombiaComponent
-      }
+        path: "resume",
+        pathMatch: "full",
+        loadChildren: () =>
+          import("@app-modules/resume/resume.module").then(
+            (m) => m.ResumeModule
+          ),
+      },
     ],
   },
 ];

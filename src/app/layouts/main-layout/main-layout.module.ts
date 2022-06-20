@@ -1,18 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
-import { MainLayoutComponent } from "./main-layout.component";
 import { AngularMaterialModule } from "@shared/angular-material/angular-material.module";
-import { InterceptorService } from "@app-core/http/interceptor.service";
 
-import { MainRoutingModule } from "./main-routing.module";
-import { DashboardModule } from "@app-modules/dashboard/dashboard.module";
-import { UberModule } from '../../modules/uber/uber.module';
-import { PuntosColombiaModule } from '../../modules/puntos-colombia/puntos-colombia.module';
-
+import { MainLayoutComponent } from "./main-layout.component";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 
+import { MainRoutingModule } from "./main-routing.module";
+import { PersonalModule } from '../../modules/personal/personal.module';
+import { ResidentialFormModule } from '../../modules/residential-form/residential-form.module';
+import { ResumeModule } from '../../modules/resume/resume.module';
 
 @NgModule({
   declarations: [MainLayoutComponent, ToolbarComponent],
@@ -21,16 +18,10 @@ import { ToolbarComponent } from "./components/toolbar/toolbar.component";
     RouterModule,
     MainRoutingModule,
     CommonModule,
-    DashboardModule,
-    UberModule,
-    PuntosColombiaModule
+    PersonalModule,
+    ResidentialFormModule,
+    ResumeModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorService,
-      multi: true,
-    },
-  ],
+  providers: [],
 })
 export class MainLayoutModule {}

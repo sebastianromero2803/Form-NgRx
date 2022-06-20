@@ -4,7 +4,9 @@ import { ResidentialState } from "../models/residential.model";
 export const residentialSelector =
   createFeatureSelector<ResidentialState>("storeResidential");
 
-export const getPersonalInfo = createSelector(
+export const getResidentialInfo = createSelector(
   residentialSelector,
-  (state: ResidentialState) => [state.direction, state.neighborhood, state.department, state.city]
+  (state: ResidentialState) => {
+    return {direction: state.direction, neighborhood: state.neighborhood, department: state.department, city: state.city} as ResidentialState;
+  }
 );

@@ -3,19 +3,19 @@
 </div>
 <div class="form" [formGroup]="residentialForm">
     <mat-form-field class="form__input" appearance="legacy">
-        <mat-label>Nombre</mat-label>
+        <mat-label>Dirección</mat-label>
         <input matInput formControlName="direction"/>
     </mat-form-field>
     <mat-form-field class="form__input" appearance="legacy">
-        <mat-label>Apellidos</mat-label>
+        <mat-label>Barrio</mat-label>
         <input matInput formControlName="neighborhood"/>
     </mat-form-field>
     <mat-form-field class="form__input" appearance="legacy">
-        <mat-label>Edad</mat-label>
+        <mat-label>Departamento</mat-label>
         <input matInput formControlName="department"/>
     </mat-form-field>
     <mat-form-field class="form__input" appearance="legacy">
-        <mat-label>Correo Electrónico</mat-label>
+        <mat-label>Ciudad</mat-label>
         <input matInput formControlName="city"/>
     </mat-form-field>
     <button
@@ -23,7 +23,8 @@
         color="primary"
         [disabled]="!residentialForm.valid"
         (click)="saveResidential()"
+        routerLink="/resume"
     >
-        Save
+        Next
     </button>
 </div>
